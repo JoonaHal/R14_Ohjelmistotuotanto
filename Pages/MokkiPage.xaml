@@ -1,0 +1,47 @@
+<ContentPage
+    x:Class="Mökinvaraus.Pages.MokkiPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Mökkiylläpito">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label Text="Mökkien hallinta" FontSize="24" HorizontalOptions="Center" />
+
+            <Entry x:Name="nimiEntry" Placeholder="Mökin nimi" />
+            <Entry x:Name="sijaintiEntry" Placeholder="Sijainti" />
+            <Entry x:Name="asukasEntry" Placeholder="Asukasmäärä" Keyboard="Numeric" />
+            <Entry x:Name="kuvausEntry" Placeholder="Kuvaus" />
+            <Entry x:Name="hintaEntry" Placeholder="Yöhinta (€)" Keyboard="Numeric" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Lisää" Clicked="Lisaa_Clicked" BackgroundColor="#4CAF50" TextColor="White" />
+                <Button Text="Päivitä" Clicked="Paivita_Clicked" BackgroundColor="#2196F3" TextColor="White" />
+                <Button Text="Poista" Clicked="Poista_Clicked" BackgroundColor="#F44336" TextColor="White" />
+                <Button Text="Lataa" Clicked="Lataa_Clicked" BackgroundColor="#9C27B0" TextColor="White" />
+            </HorizontalStackLayout>
+
+            <Label Text="Mökkilista" FontSize="20" Margin="0,20,0,0"/>
+
+
+            <CollectionView x:Name="mokkiLista" SelectionMode="Single" SelectionChanged="mokkiLista_SelectionChanged">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" Padding="10" Margin="0,5">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding NIMI}" FontAttributes="Bold"/>
+                                <Label Text="{Binding SIJAINTI}" FontSize="12"/>
+                                <Label Text="{Binding YOHINTA, StringFormat='Hinta: {0} € / yö'}" FontSize="12"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

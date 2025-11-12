@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Windows Machine": {
+      "commandName": "Project",
+      "nativeDebugging": false
+    },
+    "Profile 1": {
+      "commandName": "Executable",
+      "executablePath": "C:\\temp\\tehtavat\\Mökinvaraus\\Mökinvaraus.sln"
+    }
+  }
+}

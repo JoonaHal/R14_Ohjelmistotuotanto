@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Mökinvaraus.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sf="clr-namespace:Syncfusion.Maui.Toolkit.SegmentedControl;assembly=Syncfusion.Maui.Toolkit"
+    xmlns:pages="clr-namespace:Mökinvaraus.Pages"
+    Shell.FlyoutBehavior="Flyout"
+    Title="Mökinvaraus">
+
+    <ShellContent
+        Title="Päävalikko"
+        ContentTemplate="{DataTemplate pages:MainPage}"
+        Route="main" />
+
+    <ShellContent
+        Title="Mökit"
+        ContentTemplate="{DataTemplate pages:MokkiPage}"
+        Route="mokit" />
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="15">
+            <sf:SfSegmentedControl 
+                x:Name="ThemeSegmentedControl"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"
+                SegmentWidth="40" 
+                SegmentHeight="40"
+                SelectionChanged="SfSegmentedControl_SelectionChanged">
+
+                <sf:SfSegmentedControl.ItemsSource>
+                    <x:Array Type="{x:Type sf:SfSegmentItem}">
+                        <sf:SfSegmentItem ImageSource="{StaticResource IconLight}" />
+                        <sf:SfSegmentItem ImageSource="{StaticResource IconDark}" />
+                    </x:Array>
+                </sf:SfSegmentedControl.ItemsSource>
+            </sf:SfSegmentedControl>
+        </Grid>
+    </Shell.FlyoutFooter>
+
+</Shell>

@@ -1,0 +1,28 @@
+<ContentPage
+    x:Class="Mökinvaraus.Pages.AsiakasPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Asiakashallinta">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label Text="Asiakkaiden hallinta" FontSize="20" HorizontalOptions="Center" />
+
+            <Entry x:Name="EtunimiEntry" Placeholder="Etunimi" />
+            <Entry x:Name="SukunimiEntry" Placeholder="Sukunimi" />
+            <Entry x:Name="PuhelinEntry" Placeholder="Puhelin" Keyboard="Telephone" />
+            <Entry x:Name="SahkopostiEntry" Placeholder="Sähköposti" Keyboard="Email" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Lisää" Clicked="LisaaAsiakas_Clicked" BackgroundColor="Green" TextColor="White"/>
+                <Button Text="Päivitä" Clicked="PaivitaAsiakas_Clicked" BackgroundColor="DodgerBlue" TextColor="White"/>
+                <Button Text="Poista" Clicked="PoistaAsiakas_Clicked" BackgroundColor="Red" TextColor="White"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Asiakaslista" FontAttributes="Bold" />
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
