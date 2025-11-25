@@ -1,0 +1,54 @@
+<ContentPage
+    x:Class="Mökinvaraus.Pages.VarausPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Varaukset">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="10">
+
+            <Label Text="Varaukset" FontSize="20" HorizontalOptions="Center" />
+
+            <!-- MÖKKI -->
+            <Picker x:Name="MokkiPicker"
+                    Title="Valitse mökki"
+                    ItemDisplayBinding="{Binding NIMI}" />
+
+            <!-- ASIAKAS -->
+            <Picker x:Name="AsiakasPicker"
+                    Title="Valitse asiakas"
+                    ItemDisplayBinding="{Binding KOKONIMI}" />
+
+            <!-- PÄIVÄMÄÄRÄT -->
+            <DatePicker x:Name="AlkuPvmPicker" />
+            <DatePicker x:Name="LoppuPvmPicker" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Lisää" BackgroundColor="Green" TextColor="White" Clicked="Lisaa_Clicked"/>
+                <Button Text="Päivitä" BackgroundColor="DodgerBlue" TextColor="White" Clicked="Paivita_Clicked"/>
+                <Button Text="Poista" BackgroundColor="Red" TextColor="White" Clicked="Poista_Clicked"/>
+                <Button Text="Lataa" BackgroundColor="Purple" TextColor="White" Clicked="Lataa_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Varauslista" FontAttributes="Bold" />
+
+            <CollectionView x:Name="VarausLista"
+                            SelectionMode="Single"
+                            SelectionChanged="VarausLista_SelectionChanged">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding MOKKI_NIMI}" FontAttributes="Bold"/>
+                                <Label Text="{Binding ASIAKAS_NIMI}" />
+                                <Label Text="{Binding ALKUPVM, StringFormat='Alkaa: {0:dd.MM.yyyy}'}"/>
+                                <Label Text="{Binding LOPPUPVM, StringFormat='Loppuu: {0:dd.MM.yyyy}'}"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

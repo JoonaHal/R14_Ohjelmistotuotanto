@@ -12,6 +12,16 @@
                FontAttributes="Bold"
                HorizontalOptions="Center" />
 
+            <Button Text=" Varausten hallinta"
+                BackgroundColor="#FF9800"
+                TextColor="White"
+                FontSize="18"
+                CornerRadius="12"
+                Clicked="AvaaVarausPage_Clicked"
+                HeightRequest="60"
+                WidthRequest="250"
+                HorizontalOptions="Center" />
+
             <Button Text=" Mökkien hallinta"
                 BackgroundColor="#4CAF50"
                 TextColor="White"
@@ -30,8 +40,6 @@
                 Clicked="AvaaAsiakasPage_Clicked"
                 HeightRequest="60"
                 WidthRequest="250" />
-
-            
 
         </VerticalStackLayout>
     </ScrollView>

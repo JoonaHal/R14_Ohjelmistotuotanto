@@ -19,6 +19,9 @@ namespace Mökinvaraus.Pages
         {
             await Navigation.PushAsync(new AsiakasPage());
         }
-       
+       private async void AvaaVarausPage_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new VarausPage());
+        }
     }
 }

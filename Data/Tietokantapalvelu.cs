@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Mökinvaraus.Models;
+using System.Collections;
 
 namespace Mökinvaraus.Data
 {
@@ -161,7 +162,7 @@ namespace Mökinvaraus.Data
         }
 
         // tämä hakee kaikki asiakkaat tietokannasta
-        public async Task<List<Asiakas>> HaeAsiakkaatAsync()
+        public async Task<List<Asiakas>> HaeAsiakasAsync(int aSIAKAS_ID)
         {
             var lista = new List<Asiakas>();
             using var yhteys = new SqliteConnection($"Data Source={_dbPolku}");
@@ -350,6 +351,30 @@ namespace Mökinvaraus.Data
             await komento.ExecuteNonQueryAsync();
         }
 
+        public async Task<List<Asiakas>> HaeAsiakasAsync()
+        {
+            var lista = new List<Asiakas>();
+            using var yhteys = new SqliteConnection($"Data Source={_dbPolku}");
+            await yhteys.OpenAsync();
+
+            var komento = yhteys.CreateCommand();
+            komento.CommandText = "SELECT ASIAKAS_ID, ETUNIMI, SUKUNIMI, PUHELIN, SAHKOPOSTI FROM ASIAKAS;";
+
+            using var lukija = await komento.ExecuteReaderAsync();
+            while (await lukija.ReadAsync())
+            {
+                lista.Add(new Asiakas
+                {
+                    ASIAKAS_ID = lukija.GetInt32(0),
+                    ETUNIMI = lukija.GetString(1),
+                    SUKUNIMI = lukija.GetString(2),
+                    PUHELIN = lukija.IsDBNull(3) ? "" : lukija.GetString(3),
+                    SAHKOPOSTI = lukija.IsDBNull(4) ? "" : lukija.GetString(4)
+                });
+            }
+
+            return lista;
+        }
 
     }
 }

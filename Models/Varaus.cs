@@ -13,6 +13,5 @@ namespace Mökinvaraus.Models
         public int ASIAKAS_ID { get; set; }
         public DateTime ALKUPVM { get; set; }
         public DateTime LOPPUPVM { get; set; }
-
     }
 }

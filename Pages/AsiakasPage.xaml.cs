@@ -21,7 +21,7 @@ public partial class AsiakasPage : ContentPage
 
     private async Task LataaAsiakkaat()
     {
-        var lista = await _db.HaeAsiakkaatAsync();
+        var lista = await _db.HaeAsiakasAsync();
       
     }
 
